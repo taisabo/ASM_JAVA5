@@ -48,21 +48,14 @@ public class CheckOutController {
 	}
 
 	@PostMapping("/user/checkout")
-	public String checkout(
-<<<<<<< HEAD
-			@RequestParam("paymentMethod") int paymentMethod, 
-			@RequestParam("selectedAddressId") int selectedAddressId,
-			Model model) {
-=======
-			@RequestParam("paymentMethod") int paymentMethod, Model model) {
->>>>>>> parent of b094af6 (profile-user)
+	public String checkout(@RequestParam("paymentMethod") int paymentMethod,
+			@RequestParam("selectedAddressId") int selectedAddressId, Model model) {
 		try {
-			
-			
+
 			if (paymentMethod < 0 || paymentMethod > 2) {
-	            model.addAttribute("error", "Phương thức thanh toán không hợp lệ.");
-	            return "/user/checkout.html";
-	        }
+				model.addAttribute("error", "Phương thức thanh toán không hợp lệ.");
+				return "/user/checkout.html";
+			}
 
 			orderService.CreateOrder(2, paymentMethod);
 			return "redirect:/cart";
